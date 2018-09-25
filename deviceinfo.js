@@ -9,6 +9,8 @@ if (!RNDeviceInfo && Platform.OS === 'web') {
   RNDeviceInfo = require('./web');
 }
 
+const NOTCH_DEVICES = ['iPhone X', 'iPhone XS', 'iPhone XS Max', 'iPhone XR'];
+
 export default {
   getUniqueID: function() {
     return RNDeviceInfo.uniqueId;
@@ -90,6 +92,9 @@ export default {
   },
   isPinOrFingerprintSet: function() {
     return RNDeviceInfo.isPinOrFingerprintSet;
+  },
+  hasNotch: function() {
+    return NOTCH_DEVICES.includes(RNDeviceInfo.model);
   },
   getFirstInstallTime: function() {
     return RNDeviceInfo.firstInstallTime;
